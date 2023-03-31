@@ -1,0 +1,13 @@
+
+Ljavascript:S1128"*Remove this unused import of 'StyleSheet'.(…L8áÕÔ§ì0
+Xjavascript:S1481"5Remove the declaration of the unused 'name' variable.(Ã¶œ8âÕÔ§ì0
+Ujavascript:S1854"2Remove this useless assignment to variable "name".(Ã¶œ8âÕÔ§ì0
+[javascript:S1481"8Remove the declaration of the unused 'setName' variable.(Ã¶œ8ãÕÔ§ì0
+Xjavascript:S1854"5Remove this useless assignment to variable "setName".(Ã¶œ8äÕÔ§ì0
+^javascript:S1481"6Remove the declaration of the unused 'email' variable.(‰úØêÿÿÿÿÿ8äÕÔ§ì0
+[javascript:S1854"3Remove this useless assignment to variable "email".(‰úØêÿÿÿÿÿ8åÕÔ§ì0
+ajavascript:S1481"9Remove the declaration of the unused 'setEmail' variable.(‰úØêÿÿÿÿÿ8åÕÔ§ì0
+^javascript:S1854"6Remove this useless assignment to variable "setEmail".(‰úØêÿÿÿÿÿ8æÕÔ§ì0
+Kjavascript:S6480$"(JSX props should not use arrow functions(Äà¾Ô8çÕÔ§ì0
+Jjavascript:S6480%"(JSX props should not use arrow functions(áò´k8çÕÔ§ì0
+Jjavascript:S6480%"(JSX props should not use arrow functions(áò´k8èÕÔ§ì0
