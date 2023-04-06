@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
                   style={{ backgroundColor: globalStyles.primaryColor.color, borderRadius: 30, elevation: 5 }}
                   textColor="#fff"
                   onPress={() => {
-                      navigation.navigate('About');
+                      navigation.navigate('Loading', {name: 'About', text: ''});
                   }}
                 >
                     Start Tour

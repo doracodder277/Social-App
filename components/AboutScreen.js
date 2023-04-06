@@ -25,7 +25,7 @@ const AboutMe = ({ navigation }) => {
         I'm also a [Your Personality Traits], and I love connecting with new people and learning about their experiences. I'm looking forward to getting to know you better and building a strong relationship through this app.
       </Text>
       {Platform.OS != 'web' ? 
-        <TouchableOpacity onPress={() => navigation.navigate('Form')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Loading', {name: 'Form', text: "Now It's your turn.."})}>
           <LottieView
               source={require('../Animations/124161-next-button-pressing.json')}
               autoPlay

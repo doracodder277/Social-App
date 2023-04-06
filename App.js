@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Form from './components/forms/Form'
 import HomeScreen from "./components/HomeScreen";
 import AboutMe from "./components/AboutScreen"
+import Loading from "./components/LoadingScreen"
 import globalStyles from './Styles';
 
 const Stack = createStackNavigator();
@@ -25,7 +26,8 @@ export default function App() {
         >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="About" component={AboutMe} />
-          <Stack.Screen name="Form" component={Form} />
+          <Stack.Screen name="Form" component={Form} options={{headerShown: false}}/>
+          <Stack.Screen name="Loading" component={Loading} options={{headerTitle: "", headerLeft: null}} />
           {/* Add other screens here */}
         </Stack.Navigator>
       </NavigationContainer>
