@@ -1,11 +1,14 @@
 import React from 'react';
 import { View, ImageBackground } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import globalStyles from '../../Styles';
+import { Platform } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 const FormStep1 = ({ navigation }) => {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
+    const [flag, setFlag] = React.useState(false);
 
     const handleNext = () => {
         console.log(navigation);
@@ -19,20 +22,29 @@ const FormStep1 = ({ navigation }) => {
               style={{ ...styles.container, width: '100%' }}
             >
                 <TextInput
-                    label="Name"
+                    label="what's your name.?"
+                    mode='outlined'
                     value={name}
+                    style={styles.txtInput}
                     onChangeText={(text) => setName(text)}
-                    style={globalStyles.input}
                 />
-                <TextInput
-                    label="Email"
+                {name && flag ? <TextInput
+                    label="How young are you.?"
+                    mode='outlined'
                     value={email}
+                    style={styles.txtInput}
                     onChangeText={(text) => setEmail(text)}
-                    style={globalStyles.input}
-                />
-                <Button mode="contained" onPress={handleNext}>
-                    Next
-                </Button>
+                /> : null}
+                {Platform.OS != 'web' ? 
+                    <TouchableOpacity onPress={() => flag ? navigation.navigate('Loading', {name: 'Form', screen: 'ContactInfo'}) : setFlag(true)}>
+                    <LottieView
+                        source={require('../../Animations/124161-next-button-pressing.json')}
+                        autoPlay
+                        loop
+                        style={styles.animation2}
+                    /> 
+                    </TouchableOpacity> : null
+                }
             </ImageBackground>
         </View>
     );
@@ -44,7 +56,10 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
-        justifyContent: 'flex-start'
+    },
+    txtInput : {
+        width: '80%',
+        // backgroundColor: 'transparent'
     },
     header: {
         fontSize: 24,
@@ -58,7 +73,11 @@ const styles = {
         marginBottom: 50,
         width: 200,
         height: 300,
-    }
+    },
+    animation2: {
+        width: 200,
+        height: 100
+      }
 };
 
 export default FormStep1;

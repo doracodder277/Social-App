@@ -1,40 +1,83 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, ImageBackground } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+import { Platform } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import LottieView from 'lottie-react-native';
 
-const ReviewScreen = ({ navigation, route }) => {
-  const { firstName, lastName, email, phone } = route.params;
+const FormStep3 = ({ navigation }) => {
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [flag, setFlag] = React.useState(false);
 
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 20, marginBottom: 10 }}>
-        Please review your information:
-      </Text>
-      <View style={{ marginBottom: 10 }}>
-        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-          First Name: {firstName}
-        </Text>
-        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-          Last Name: {lastName}
-        </Text>
-        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-          Email: {email}
-        </Text>
-        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-          Phone: {phone}
-        </Text>
-      </View>
-      <Button
-        title="Edit Contact Info"
-        onPress={() => navigation.goBack()}
-      />
-      <Button
-        title="Submit"
-        onPress={() => {
-          // TODO: Handle form submission
-        }}
-      />
-    </View>
-  );
+    const handleNext = () => {
+        console.log(navigation);
+    };
+
+    return (
+        <View style={styles.container}>
+            <ImageBackground
+              source={require('../../assets/de-jesus-benitez-kEgJVDkQkbU-unsplash.jpg')}
+              resizeMode='cover'
+              style={{ ...styles.container, width: '100%' }}
+            >
+                <TextInput
+                    label="Where are you from..?"
+                    mode='outlined'
+                    value={name}
+                    style={styles.txtInput}
+                    onChangeText={(text) => setName(text)}
+                />
+                {name && flag ? <TextInput
+                    label="What do you do..?"
+                    mode='outlined'
+                    value={email}
+                    style={styles.txtInput}
+                    onChangeText={(text) => setEmail(text)}
+                /> : null}
+                {Platform.OS != 'web' ? 
+                    <TouchableOpacity onPress={() => flag ? navigation.navigate('Loading', {name: 'AboutHim'}) : setFlag(true)}>
+                    <LottieView
+                        source={require('../../Animations/124161-next-button-pressing.json')}
+                        autoPlay
+                        loop
+                        style={styles.animation2}
+                    /> 
+                    </TouchableOpacity> : null
+                }
+            </ImageBackground>
+        </View>
+    );
 };
 
-export default ReviewScreen;
+const styles = {
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f2f2f2',
+    },
+    txtInput : {
+        width: '80%',
+        // backgroundColor: 'transparent'
+    },
+    header: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    button: {
+        width: '50%',
+    },
+    animation: {
+        marginBottom: 50,
+        width: 200,
+        height: 300,
+    },
+    animation2: {
+        width: 200,
+        height: 100
+      }
+};
+
+export default FormStep3;

@@ -8,7 +8,7 @@ const Loading = ({ route, navigation }) => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
         	navigation.pop();
-          navigation.navigate(route.params.name);
+          navigation.navigate(route.params.name, {screen: route.params.screen});
         }, 1900);
         return () => clearTimeout(timeoutId);
       }, [navigation]);
